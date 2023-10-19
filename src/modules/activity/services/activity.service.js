@@ -8,8 +8,8 @@ const ActivityService = {
     getAll:(query = {}) => {
         return ActivityModel.find(query)
     },
-    getOne: (id, query) => {
-        return ActivityModel.findById({ _id: id}, {$set: query})
+    getOne: (id) => {
+        return ActivityModel.findById({ _id: id})
     },
     updateOne: (id, query) => {
         return ActivityModel.findByIdAndUpdate({ _id:id } , {$set: query})
