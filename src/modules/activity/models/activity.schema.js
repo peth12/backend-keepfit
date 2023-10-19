@@ -28,7 +28,7 @@ const ActivitySchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  UserNameId: {
+  UserId: {
     type: Number,
     require: true,
   },

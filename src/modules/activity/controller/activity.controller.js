@@ -23,7 +23,7 @@ const ActivityController = {
         ActivityType,
         ActivityDuration,
         ActivityImage,
-        UserNameId,
+        UserId,
         UserEmail
       } = req.body;
 
@@ -33,7 +33,7 @@ const ActivityController = {
         ActivityType,
         ActivityDuration,
         ActivityImage,
-        UserNameId,
+        UserId,
         UserEmail
       });
 
@@ -51,7 +51,7 @@ const ActivityController = {
         ActivityType,
         ActivityDuration,
         ActivityImage,
-        UserNameId,
+        UserId,
         UserEmail
       } = req.body;
 
@@ -61,7 +61,7 @@ const ActivityController = {
         ActivityType: ActivityType,
         ActivityDuration: ActivityDuration,
         ActivityImage: ActivityImage,
-        UserNameId: UserNameId,
+        UserId: UserId,
         UserEmail : UserEmail
       };
 
