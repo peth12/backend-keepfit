@@ -15,8 +15,9 @@ const ActivityService = {
         return ActivityModel.findByIdAndUpdate({ _id:id } , {$set: query})
     },
     deleteOne: (id) => {
-        return ActivityModel.findOneAndDelete({_id: id})
+        return ActivityModel.deleteOne({_id: id})
     }
 }
 
 export default ActivityService
+

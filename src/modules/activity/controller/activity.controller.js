@@ -16,22 +16,22 @@ const ActivityController = {
     }
   },
   createActivity: async (req, res, next) => {
+    const ActivityDurationInt = req.body.ActivityDuration
     try {
       const {
         ActivityName,
         ActivityDesc,
         ActivityType,
-        ActivityDuration,
         ActivityImage,
         UserId,
         UserEmail
       } = req.body;
 
-      const activityData = await ActivityModel.create({
+      const activityData = await ActivityService.create({
         ActivityName,
         ActivityDesc,
         ActivityType,
-        ActivityDuration,
+        ActivityDuration : ActivityDurationInt,
         ActivityImage,
         UserId,
         UserEmail
@@ -45,11 +45,12 @@ const ActivityController = {
   updateActivity: async (req, res, next) => {
     try {
       const id = req.params.id;
+      const ActivityDurationInt = req.body.ActivityDuration
+      parseInt()
       const {
         ActivityName,
         ActivityDesc,
         ActivityType,
-        ActivityDuration,
         ActivityImage,
         UserId,
         UserEmail
@@ -59,7 +60,7 @@ const ActivityController = {
         ActivityName: ActivityName,
         ActivityDesc: ActivityDesc,
         ActivityType: ActivityType,
-        ActivityDuration: ActivityDuration,
+        ActivityDuration: ActivityDurationInt,
         ActivityImage: ActivityImage,
         UserId: UserId,
         UserEmail : UserEmail

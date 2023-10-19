@@ -47,7 +47,7 @@ const ActivityTypeController = {
   updateActivityType: async (req, res, next) => {
     try {
       const id = req.params.id;
-      const {ActivityTypeName, ActivityTypeImage, ActivityTypeDesc } = req.body;
+      const { ActivityTypeName, ActivityTypeImage, ActivityTypeDesc } = req.body;
 
       const updateDataActivityType = {
         ActivityTypeName: ActivityTypeName,
