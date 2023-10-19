@@ -22,32 +22,26 @@ const ActivityTypeController = {
     try {
       const { ActivityTypeName, ActivityTypeImage, ActivityTypeDesc } =
         req.body;
-
-      const checkActivityName = await ActivityTypeService.getAll({
-        ActivityTypeName: ActivityTypeName,
-      });
-      // console.log(checkActivityName);
-      if (
-        !checkActivityName.toString().toLocaleLowerCase ===
-        ActivityTypeName.toString().toLocaleLowerCase
-      ) {
+      
+      if (ActivityTypeName) {
         const ActivityType = await ActivityTypeService.create({
           ActivityTypeName,
           ActivityTypeImage,
           ActivityTypeDesc,
         });
-        res.status(201).json(ActivityType);
+        return res.status(201).json(ActivityType);
       } else {
-        res.send({ message: "This Workout already exists" });
+        return res.send({ message: "This Workout already exists" });
       }
     } catch (err) {
-      next(err);
+      next(err); 
     }
   },
   updateActivityType: async (req, res, next) => {
     try {
       const id = req.params.id;
-      const { ActivityTypeName, ActivityTypeImage, ActivityTypeDesc } = req.body;
+      const { ActivityTypeName, ActivityTypeImage, ActivityTypeDesc } =
+        req.body;
 
       const updateDataActivityType = {
         ActivityTypeName: ActivityTypeName,

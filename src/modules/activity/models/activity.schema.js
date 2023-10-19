@@ -22,7 +22,7 @@ const ActivitySchema = new mongoose.Schema({
   },
   ActivityDate: {
     type: Date,
-    default: new Date(),
+    default: new Date,
   },
   UserEmail: {
     type: String,

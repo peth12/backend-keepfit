@@ -16,12 +16,13 @@ const ActivityController = {
     }
   },
   createActivity: async (req, res, next) => {
-    const ActivityDurationInt = req.body.ActivityDuration
+    const ActivityDurationInt = parseInt(req.body.ActivityDuration) 
     try {
       const {
         ActivityName,
         ActivityDesc,
         ActivityType,
+
         ActivityImage,
         UserId,
         UserEmail

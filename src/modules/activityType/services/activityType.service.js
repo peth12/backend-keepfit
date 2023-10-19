@@ -17,6 +17,10 @@ const ActivityTypeService = {
     deleteOne: (id) => {
         return ActivityTypModel.findOneAndDelete({_id: id})
     },
+    findOne : (query) => {
+        return ActivityTypModel.findOne(query)
+    }
+
     
 }
 
