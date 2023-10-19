@@ -23,6 +23,8 @@ const ActivityController = {
         ActivityType,
         ActivityDuration,
         ActivityImage,
+        UserNameId,
+        UserEmail
       } = req.body;
 
       const activityData = await ActivityModel.create({
@@ -31,6 +33,8 @@ const ActivityController = {
         ActivityType,
         ActivityDuration,
         ActivityImage,
+        UserNameId,
+        UserEmail
       });
 
       res.status(201).json(activityData);
@@ -47,6 +51,8 @@ const ActivityController = {
         ActivityType,
         ActivityDuration,
         ActivityImage,
+        UserNameId,
+        UserEmail
       } = req.body;
 
       const updateDataActivity = {
@@ -55,6 +61,8 @@ const ActivityController = {
         ActivityType: ActivityType,
         ActivityDuration: ActivityDuration,
         ActivityImage: ActivityImage,
+        UserNameId: UserNameId,
+        UserEmail : UserEmail
       };
 
       const activityData = await ActivityService.updateOne(

@@ -18,11 +18,19 @@ const ActivitySchema = new mongoose.Schema({
   },
   ActivityImage: {
     type: String,
-    default: "image"
+    default: "image",
   },
   ActivityDate: {
     type: Date,
     default: new Date(),
+  },
+  UserEmail: {
+    type: String,
+    require: true,
+  },
+  UserNameId: {
+    type: Number,
+    require: true,
   },
 });
 
