@@ -12,6 +12,9 @@ const UserSchema = new mongoose.Schema({
   UserDateOfBirth: {
     type: Date,
   },
+  UserImage: {
+    type: String,
+  },
   Gender: {
     type: String,
     default: "Not specified",
@@ -33,8 +36,8 @@ const UserSchema = new mongoose.Schema({
     require: true,
   },
   UserRole: {
-    type: Boolean,
-    default: false
+    type: String,
+    default: 'user'
   }
 });
 

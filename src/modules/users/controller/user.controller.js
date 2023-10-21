@@ -20,7 +20,8 @@ const UserController = {
       Height,
       UserEmail,
       UserPassword,
-      UserRole
+      UserRole,
+      UserImage
     } = req.body;
     const CreateUser = await UserService.create(
       {
@@ -32,7 +33,8 @@ const UserController = {
       Height,
       UserEmail,
       UserPassword,
-      UserRole
+      UserRole,
+      UserImage
     }
     );
     res.status(201).json(CreateUser);
@@ -48,7 +50,8 @@ const UserController = {
       Height,
       UserEmail,
       UserPassword,
-      UserRole
+      UserRole,
+      UserImage
     } = req.body;
 
     const updateDataUser = await UserService.updateOne(id, {
@@ -61,6 +64,7 @@ const UserController = {
       UserEmail :UserEmail,
       UserPassword :UserPassword,
       UserRole: UserRole,
+      UserImage: UserImage
     })  
     
 

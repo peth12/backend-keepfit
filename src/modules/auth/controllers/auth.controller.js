@@ -1,15 +1,20 @@
 import Authservice from "../services/auth.service.js";
 import UserModel from "../../users/models/user.schema.js";
+import bcrypt from 'bcrypt'
+import Jwt from 'jsonwebtoken'
 
 const AuthController = {
   login: async (req, res) => {
     try {
       const { UserEmail, UserPassword } = req.body;
-      let user = await UserModel.findOne({ UserEmail });
+      const user = await Authservice.getuser({ UserEmail: UserEmail });
+      console.log(req.body);
+      console.log(user);
 
-      if (user && user.enable) {
+      if (user) {
         // check password
-        const passwordIsTrue = await bcrypt.compare(
+        
+        const passwordIsTrue = await bcrypt.compareSync(
           UserPassword,
           user.UserPassword
         );
@@ -43,8 +48,20 @@ const AuthController = {
   register: async (req, res) => {
     try {
       // check user
-      const { UserEmail, UserPassword } = req.body;
-      let user = await UserModel.findOne({ UserEmail });
+      const {
+        Userfname,
+        Userlname,
+        UserDateOfBirth,
+        Gender,
+        Weight,
+        Height,
+        UserEmail,
+        UserPassword,
+        UserRole,
+        UserImage
+      } = req.body;
+
+      let user = await Authservice.getuser({ UserEmail: UserEmail });
 
       if (user) {
         return res.status(404).send("user already exists");
@@ -53,8 +70,16 @@ const AuthController = {
       const salt = await bcrypt.genSalt(12);
 
       user = new UserModel({
+        Userfname,
+        Userlname,
+        UserDateOfBirth,
+        Gender,
+        Weight,
+        Height,
         UserEmail,
         UserPassword,
+        UserRole,
+        UserImage
       });
 
       //encrypt
