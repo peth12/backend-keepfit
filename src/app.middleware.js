@@ -7,7 +7,7 @@ const AppMiddleware = express();
 
 
 
-AppMiddleware.use(express.json())
+AppMiddleware.use(express.json({limit: '50mb'}))
 AppMiddleware.use(express.urlencoded({extended:true}))
 AppMiddleware.use(morgan('dev'))
 AppMiddleware.use(cors())

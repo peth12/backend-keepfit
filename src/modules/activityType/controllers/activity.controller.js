@@ -1,4 +1,5 @@
 import ActivityTypeService from "../services/activityType.service.js";
+import cloudinary from "../../../../utils/cloundinary.js";
 
 const ActivityTypeController = {
   getUser: async (req, res) => {
@@ -22,11 +23,15 @@ const ActivityTypeController = {
     try {
       const { ActivityTypeName, ActivityTypeImage, ActivityTypeDesc } =
         req.body;
-      
+        const uploadResponse = await cloudinary.uploader.upload(ActivityTypeImage, {
+          upload_preset: 'keepfit',
+          folder: 'workout'
+         })
+         console.log(uploadResponse.url);
       if (ActivityTypeName) {
         const ActivityType = await ActivityTypeService.create({
           ActivityTypeName,
-          ActivityTypeImage,
+          ActivityTypeImage : uploadResponse.url,
           ActivityTypeDesc,
         });
         return res.status(201).json(ActivityType);
