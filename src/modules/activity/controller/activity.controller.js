@@ -61,7 +61,7 @@ const ActivityController = {
         UserId,
         UserEmail
       } = req.body;
-      const uploadResponse = await cloudinary.uploader.upload(ActivityTypeImage, {
+      const uploadResponse = await cloudinary.uploader.upload(ActivityImage, {
         upload_preset: 'keepfit',
         folder: 'activity'
        })
