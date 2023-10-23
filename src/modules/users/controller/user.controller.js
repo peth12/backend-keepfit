@@ -23,6 +23,10 @@ const UserController = {
       UserRole,
       UserImage
     } = req.body;
+    const uploadResponse = await cloudinary.uploader.upload(ActivityTypeImage, {
+      upload_preset: 'keepfit',
+      folder: 'user'
+     })
     const CreateUser = await UserService.create(
       {
       Userfname,
@@ -34,7 +38,7 @@ const UserController = {
       UserEmail,
       UserPassword,
       UserRole,
-      UserImage
+      UserImage: uploadResponse.url,
     }
     );
     res.status(201).json(CreateUser);

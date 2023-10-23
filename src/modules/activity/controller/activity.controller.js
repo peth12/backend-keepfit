@@ -3,7 +3,7 @@ import ActivityService from "../services/activity.service.js";
 import cloudinary from "../../../../utils/cloundinary.js";
 
 const ActivityController = {
-  getAllActivity: async (req, res) => {
+  getAllActivity : async (req, res) => {
     const activityData = await ActivityService.getAll();
     const changeDateFormat = new Date(activityData.ActivityDate)
 
@@ -25,19 +25,21 @@ const ActivityController = {
         ActivityName,
         ActivityDesc,
         ActivityType,
-
         ActivityImage,
         UserId,
         UserEmail
       } = req.body;
-
+      const uploadResponse = await cloudinary.uploader.upload(ActivityTypeImage, {
+        upload_preset: 'keepfit',
+        folder: 'activity'
+       })
       const activityData = await ActivityService.create({
         ActivityName,
         ActivityDesc,
         ActivityType,
         ActivityDuration : ActivityDurationInt,
-        ActivityImage,
-        UserId,
+        ActivityImage : uploadResponse.url,
+        UserId, 
         UserEmail
       });
 
