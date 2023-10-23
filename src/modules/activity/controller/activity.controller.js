@@ -61,8 +61,31 @@ const ActivityController = {
         UserId,
         UserEmail
       } = req.body;
+      const uploadResponse = await cloudinary.uploader.upload(ActivityTypeImage, {
+        upload_preset: 'keepfit',
+        folder: 'activity'
+       })
+       if(uploadResponse){
 
-      const updateDataActivity = {
+        const updateDataActivity = {
+          ActivityName: ActivityName,
+          ActivityDesc: ActivityDesc,
+          ActivityType: ActivityType,
+          ActivityDuration: ActivityDurationInt,
+          ActivityImage: uploadResponse.url,
+          UserId: UserId,
+          UserEmail : UserEmail
+        };
+  
+        const activityData = await ActivityService.updateOne(
+          id,
+          updateDataActivity
+        );
+        res.status(201).json(activityData);
+        return
+       }
+
+       const updateDataActivity = {
         ActivityName: ActivityName,
         ActivityDesc: ActivityDesc,
         ActivityType: ActivityType,
@@ -77,6 +100,8 @@ const ActivityController = {
         updateDataActivity
       );
       res.status(201).json(activityData);
+       
+
     } catch (err) {
       next(err);
     }
