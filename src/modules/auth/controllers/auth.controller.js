@@ -21,7 +21,7 @@ const AuthController = {
 
         console.log(passwordIsTrue);
         if (!passwordIsTrue) {
-          return res.status(400).send("Password invalid!!");
+          return res.status(400).send({ message: "Password invalid!!"});
         }
 
         // create payload
@@ -38,7 +38,7 @@ const AuthController = {
           res.json({ message: "login success", token, payload });
         });
       } else {
-        return res.status(400).send("User Not found!!");
+        return res.status(400).json({ message: "User Not found or !!"});
       }
     } catch (err) {
       console.error(err);
