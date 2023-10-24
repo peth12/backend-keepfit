@@ -1,6 +1,6 @@
 import ActivityModel from "../models/activity.schema.js";
 import ActivityService from "../services/activity.service.js";
-import cloudinary from "../../../../utils/cloundinary.js";
+import cloudinary from "../../../utils/cloundinary.js";
 
 const ActivityController = {
   getAllActivity : async (req, res) => {

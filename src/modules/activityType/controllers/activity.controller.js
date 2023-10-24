@@ -1,5 +1,5 @@
 import ActivityTypeService from "../services/activityType.service.js";
-import cloudinary from "../../../../utils/cloundinary.js";
+import cloudinary from "../../../utils/cloundinary.js";
 
 const ActivityTypeController = {
   getUser: async (req, res) => {
