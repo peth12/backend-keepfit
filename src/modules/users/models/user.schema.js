@@ -14,12 +14,13 @@ const UserSchema = new mongoose.Schema({
   },
   UserImage: {
     type: String,
+    default : "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg"
   },
   Gender: {
     type: String,
     default: "Not specified",
   },
-  Wieght: {
+  Weight: {
     type: Number,
     default: 0,
   },

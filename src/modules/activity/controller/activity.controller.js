@@ -26,24 +26,44 @@ const ActivityController = {
         ActivityDesc,
         ActivityType,
         ActivityImage,
+        ActivityDate,
         UserId,
         UserEmail
       } = req.body;
-      const uploadResponse = await cloudinary.uploader.upload(ActivityImage, {
-        upload_preset: 'keepfit',
-        folder: 'activity'
-       })
-      const activityData = await ActivityService.create({
-        ActivityName,
-        ActivityDesc,
-        ActivityType,
-        ActivityDuration : ActivityDurationInt,
-        ActivityImage : uploadResponse.url,
-        UserId, 
-        UserEmail
-      });
+      if(ActivityImage){
+        const uploadResponse = await cloudinary.uploader.upload(ActivityImage, {
+          upload_preset: 'keepfit',
+          folder: 'activity'
+         })
+         const activityData = await ActivityService.create({
+           ActivityName,
+           ActivityDesc,
+           ActivityType,
+           ActivityDuration : ActivityDurationInt,
+           ActivityImage : uploadResponse.url,
+           ActivityDate,
+           UserId, 
+           UserEmail
+         });
+         res.status(201).json(activityData);
+         return
+      }
+      else {
+        const activityData = await ActivityService.create({
+          ActivityName,
+          ActivityDesc,
+          ActivityType,
+          ActivityDuration : ActivityDurationInt,
+          ActivityImage : "https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/gray-background-7131-96d780fd18d4eaf58a7331d45573204e@1x.jpg",
+          ActivityDate,
+          UserId, 
+          UserEmail
+        });
+        
+        res.status(201).json(activityData);
+        return 
+      }
 
-      res.status(201).json(activityData);
     } catch (err) {
       next(err);
     }

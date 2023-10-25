@@ -64,7 +64,7 @@ const AuthController = {
       let user = await Authservice.getuser({ UserEmail: UserEmail });
 
       if (user) {
-        return res.status(404).send("user already exists");
+        return res.status(404).json({ message: "user already exists !!"});
       }
 
       const salt = await bcrypt.genSalt(12);
@@ -85,12 +85,26 @@ const AuthController = {
       //encrypt
       user.UserPassword = await bcrypt.hash(UserPassword, salt);
 
-      await user.save();
+      const userdata = await user.save();
 
-      res.status(200).send("Register success");
+      res.status(200).json({ message: "Register success", data : userdata});
     } catch (error) {
       console.error(error);
-      res.status(500).send("Server error");
+      res.status(500).json({ message: "Server error"});
+    }
+  },
+  currentUser: async( req, res ) => {
+    try{
+
+      // model user 
+      console.log("hello", req.user);
+
+      const user = await UserModel.findOne({UserEmail : req.user.UserEmail })
+      .select('-password').exec()
+      console.log("user : ", user);
+      res.send(user)
+    }catch(err){
+      console.error(err);
     }
   },
 };

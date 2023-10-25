@@ -1,3 +1,4 @@
+import UserModel from "../models/user.schema.js";
 import UserService from "../services/users.service.js";
 
 const UserController = {
@@ -8,6 +9,11 @@ const UserController = {
   getUserById: async (req, res) => {
     const id = req.params.id;
     const user = await UserService.getOne(id);
+    res.status(200).json(user);
+  },
+  getuserByEmail: async (req, res) => {
+    const userEmail = req.body.UserEmail
+    const user = await UserModel.findOne({UserEmail: userEmail})
     res.status(200).json(user);
   },
   createUser: async (req, res) => {
