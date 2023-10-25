@@ -16,6 +16,9 @@ const UserService = {
     },
     deleteOne: (id) => {
         return UserModel.findOneAndDelete({_id: id});
+    },
+    getEmail: (query) => {
+        return UserModel.findOne({UserEmail: query});
     }
 }
 

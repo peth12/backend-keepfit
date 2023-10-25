@@ -11,11 +11,6 @@ const UserController = {
     const user = await UserService.getOne(id);
     res.status(200).json(user);
   },
-  getuserByEmail: async (req, res) => {
-    const userEmail = req.body.UserEmail
-    const user = await UserModel.findOne({UserEmail: userEmail})
-    res.status(200).json(user);
-  },
   createUser: async (req, res) => {
     const {
       Userfname,
@@ -85,6 +80,17 @@ const UserController = {
     await UserService.deleteOne(id);
     res.status(201).send("delete success");
   },
+  getUserByEmail: async (req, res) => {
+    try{
+      const { UserEmail } = req.body
+
+      const user = await UserService.getEmail(UserEmail)
+
+      res.json(user)
+    }catch(err){
+      console.error(err);
+    } 
+  }
 };
 
 export default UserController;
