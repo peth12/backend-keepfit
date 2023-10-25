@@ -95,7 +95,6 @@ const AuthController = {
   },
   currentUser: async( req, res ) => {
     try{
-
       // model user 
       console.log("hello", req.user);
 

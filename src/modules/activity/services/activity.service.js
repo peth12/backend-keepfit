@@ -8,6 +8,9 @@ const ActivityService = {
     getAll:(query = {}) => {
         return ActivityModel.find(query)
     },
+    getEmail:(query) => {
+        return ActivityModel.find(query)
+    },
     getOne: (id) => {
         return ActivityModel.findById({ _id: id})
     },

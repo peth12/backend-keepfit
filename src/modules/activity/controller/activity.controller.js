@@ -135,6 +135,17 @@ const ActivityController = {
       next(err);
     }
   },
+  getActivityByEmail: async (req, res) => {
+    try{
+      const { UserEmail } = req.body
+
+      const activityData = await ActivityService.getEmail({ UserEmail : UserEmail})
+
+      res.json(activityData)
+    }catch(err){
+      console.error(err);
+    } 
+  }
 };
 
 export default ActivityController;

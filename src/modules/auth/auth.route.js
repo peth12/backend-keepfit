@@ -7,7 +7,7 @@ const AuthRouter = express.Router();
 
 AuthRouter.post("/login", AuthController.login);
 AuthRouter.post("/register", AuthController.register); 
-AuthRouter.post("/current",auth, AuthController.currentUser); 
+AuthRouter.post("/current", auth, AuthController.currentUser); 
 
 
 export default AuthRouter;
