@@ -6,7 +6,7 @@ const ActivityService = {
         return ActivityModel.create(query);
     },
     getAll:(query = {}) => {
-        return ActivityModel.find(query)
+        return ActivityModel.find(query).sort ( { ActivityDate: -1 } )
     },
     getEmail:(query) => {
         return ActivityModel.find(query)
