@@ -139,7 +139,7 @@ const ActivityController = {
     try{
       const { UserEmail } = req.body
 
-      const activityData = await ActivityService.getEmail({ UserEmail : UserEmail})
+      const activityData = await ActivityService.getEmail({ UserEmail : UserEmail}).sort ( { ActivityDate: -1 } )
 
       res.json(activityData)
     }catch(err){
