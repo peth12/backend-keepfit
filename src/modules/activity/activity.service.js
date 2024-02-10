@@ -1,4 +1,4 @@
-import ActivityModel from "../models/activity.schema.js";
+import ActivityModel from './activity.schema.js'
 
 
 const ActivityService = {

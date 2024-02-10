@@ -1,5 +1,5 @@
-import UserModel from "../models/user.schema.js";
-import UserService from "../services/users.service.js";
+import UserModel from "./user.schema.js";
+import UserService from "./users.service.js";
 
 const UserController = {
   getUser: async (req, res) => {

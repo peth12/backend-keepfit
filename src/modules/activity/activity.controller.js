@@ -1,6 +1,5 @@
-import ActivityModel from "../models/activity.schema.js";
-import ActivityService from "../services/activity.service.js";
-import cloudinary from "../../../utils/cloundinary.js";
+import ActivityService from "./activity.service.js";
+import cloudinary from "../../utils/cloundinary.js";
 
 const ActivityController = {
   getAllActivity : async (req, res) => {
@@ -42,7 +41,7 @@ const ActivityController = {
            ActivityDuration : ActivityDurationInt,
            ActivityImage : uploadResponse.url,
            ActivityDate,
-           UserId, 
+           UserId,
            UserEmail
          });
          res.status(201).json(activityData);

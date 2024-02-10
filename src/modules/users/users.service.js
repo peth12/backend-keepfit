@@ -1,4 +1,4 @@
-import UserModel from "../models/user.schema.js";
+import UserModel from "./user.schema.js";
 
 
 const UserService = {

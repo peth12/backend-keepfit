@@ -1,4 +1,4 @@
-import ActivityTypModel from "../model/activityTypeModel.js";
+import ActivityTypModel from "./activityTypeModel.js";
 
 
 const ActivityTypeService = {

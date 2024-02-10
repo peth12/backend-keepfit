@@ -1,5 +1,5 @@
-import Authservice from "../services/auth.service.js";
-import UserModel from "../../users/models/user.schema.js";
+import Authservice from "./auth.service.js";
+import UserModel from "../users/user.schema.js";
 import bcrypt from 'bcrypt'
 import Jwt from 'jsonwebtoken'
 
