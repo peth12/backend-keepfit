@@ -8,16 +8,16 @@ const ActivityController = {
 
     res.status(201).json(activityData);
   },
-  getOneActivity: async (req, res, next) => {
+  getOneActivity: async (req, res) => {
     try {
       const id = req.params.id;
       const activityData = await ActivityService.getOne(id);
       res.status(201).json(activityData);
     } catch (err) {
-      next(err);
+      res.status(500).json(err)
     }
   },
-  createActivity: async (req, res, next) => {
+  createActivity: async (req, res) => {
     const ActivityDurationInt = parseInt(req.body.ActivityDuration) 
     try {
       const {
@@ -64,10 +64,10 @@ const ActivityController = {
       }
 
     } catch (err) {
-      next(err);
+      res.status(500).json(err)
     }
   },
-  updateActivity: async (req, res, next) => {
+  updateActivity: async (req, res) => {
     try {
       const id = req.params.id;
       const ActivityDurationInt = req.body.ActivityDuration
@@ -122,16 +122,16 @@ const ActivityController = {
        
 
     } catch (err) {
-      next(err);
+      res.status(500).json(err)
     }
   },
-  deleteActivity: async (req, res, next) => {
+  deleteActivity: async (req, res) => {
     try {
       const id = req.params.id;
       await ActivityService.deleteOne(id);
       res.status(201).send("delete success");
     } catch (err) {
-      next(err);
+      res.status(500).json(err)
     }
   },
   getActivityByEmail: async (req, res) => {
@@ -142,7 +142,7 @@ const ActivityController = {
 
       res.json(activityData)
     }catch(err){
-      console.error(err);
+      res.status(500).json(err)
     } 
   }
 };
