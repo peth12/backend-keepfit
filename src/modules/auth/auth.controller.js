@@ -41,8 +41,7 @@ const AuthController = {
         return res.status(400).json({ message: "User Not found or !!"});
       }
     } catch (err) {
-      console.error(err);
-      res.status(500).send("Server Error");
+      res.status(500).json(err);
     }
   },
   register: async (req, res) => {
@@ -89,8 +88,7 @@ const AuthController = {
 
       res.status(200).json({ message: "Register success", data : userdata});
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Server error"});
+      res.status(500).json(error);
     }
   },
   currentUser: async( req, res ) => {
@@ -103,7 +101,7 @@ const AuthController = {
       console.log("user : ", user);
       res.send(user)
     }catch(err){
-      console.error(err);
+      res.status(500).json(error);
     }
   },
 };
