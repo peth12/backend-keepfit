@@ -6,7 +6,7 @@ const ActivityTypeController = {
     const ActivityType = await ActivityTypeService.getAll();
     res.status(200).json(ActivityType);
   },
-  getUserById: async (req, res, next) => {
+  getUserById: async (req, res) => {
     try {
       const id = req.params.id;
       const ActivityType = await ActivityTypeService.getOne(id);
@@ -15,11 +15,10 @@ const ActivityTypeController = {
       }
       res.status(200).json(ActivityType);
     } catch (err) {
-      console.error(err);
-      next();
+      res.status(500).json(err)
     }
   },
-  createActivityType: async (req, res, next) => {
+  createActivityType: async (req, res ) => {
     try {
       const { ActivityTypeName, ActivityTypeImage, ActivityTypeDesc } =
         req.body;
@@ -39,10 +38,10 @@ const ActivityTypeController = {
         return res.send({ message: "This Workout already exists" });
       }
     } catch (err) {
-      next(err); 
+      res.status(500).json(err)
     }
   },
-  updateActivityType: async (req, res, next) => {
+  updateActivityType: async (req, res) => {
     try {
       const id = req.params.id;
       const { ActivityTypeName, ActivityTypeImage, ActivityTypeDesc } =
@@ -61,16 +60,16 @@ const ActivityTypeController = {
 
       res.status(201).json(ActivityType);
     } catch (err) {
-      next(err);
+      res.status(500).json(err)
     }
   },
-  deletActivityType: async (req, res, next) => {
+  deletActivityType: async (req, res) => {
     try {
       const id = req.params.id;
       await ActivityTypeService.deleteOne(id);
       res.status(201).send("delete success");
     } catch (err) {
-      next(err);
+      res.status(500).json(err)
     }
   },
 };
